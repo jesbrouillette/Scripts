@@ -1,0 +1,10 @@
+server,drives,backuplocation,movegroup,notify
+ADMPCG018M,C,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+ADMPCG037M,C;D,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+ADMPCG039M,C;D,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+ADMPTL101M,C;D,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+CMMPLS001M,C;D,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+FDMPLS065M,C;D,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+GAMPLS109M,C,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+ADMPLS306M,C;D,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"
+FDMPLS088M,C,\\10.2.102.42\besr\,MG8,"jes_brouillette@cargill.com,chris_mincks@cargill.com"

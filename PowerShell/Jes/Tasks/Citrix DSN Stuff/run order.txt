@@ -1,0 +1,54 @@
+Create C:\Temp\CTX and copy the following files:
+Get-CTXUsers.ps1
+get-fileinfo.ps1
+psexec_command.txt
+Replace-Text.ps1
+run order.txt
+Sort-Unique.ps1
+update-dsn.ps1
+updatedsn.bat
+
+then run in order from powershell
+
+cd c:\temp\ctx
+
+.\get-ctxusers.ps1
+	-> exports all applications with the application name, who has access, and what server it is published on (1 server/line)
+	-> copy just the servers into list.txt
+
+.\sort-unique.ps1
+	-> outputs all unique (non-duplicate) server names into sorted.txt
+
+.\get-fileinfo.ps1 sorted.txt "c:\Program Files\Citrix\Independent Management Architecture\MF20.dsn" "SERVER="
+	-> returns what db each server is connecting to
+	-> copy only the servers that are pointing to the db needing updated to update.txt
+
+.\replace-text.ps1 update.txt "c:\Program Files\Citrix\Independent Management Architecture\MF20.dsn" "psql01_XP_EU_Farm" "SERVER=" "Address="
+	-> performs the following on each server and creates Replace-Text.log
+	-> creates a backup of "c:\Program Files\Citrix\Independent Management Architecture\MF20.dsn" as "MF20%DATE%.bak"
+	-> searches the backup for "SERVER=" and "Address="
+	-> replaces text in found lines after the search string with "psql01_XP_EU_Farm"
+
+psexec_command.txt (run command line manually) "psexec @update.txt -c -f updatedsn.bat -w C:\Temp updatedsn.bat > updatedsn.log"
+	-> connects to each server in update.txt
+	-> copies "updatedsn.bat" to the remote server
+	-> sets the remote working directory to "C:\Temp"
+	-> executes "c:\temp\updatedsn.bat" on the remote server
+
+	updatedsn.bat
+		-> causes citrix to look at the DSN file updated by replace-text.ps1
+		-> sets the "IMAService" to "manual" to keep ITO from attempting to restart it
+		-> stops the "IMAService"
+		-> waits 30 seconds
+		-> recreates the Citrix Local Host Cache
+		-> resets the "IMAService" to "auto"
+		-> starts the "IMAServices"
+		-> pauses to see all results
+
+	-> logs screen output to updatedsn.log
+
+.\check-services.ps1 update.txt imaservice
+	-> checks the imaservice on all servers in update.txt
+	-> creates StatusLog.csv with status of each servers imaservice service
+
+exit

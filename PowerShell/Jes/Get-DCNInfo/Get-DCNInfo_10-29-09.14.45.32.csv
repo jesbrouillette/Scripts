@@ -1,0 +1,2 @@
+"Server","Status","NIC","MAC","DHCP","IP","Subnet","PriGtwy","SecGtwy","PriDNS","SecDNS","OtherDNS","PriWINS","SecWINS","Speed","Duplex","ConnectedSpeed","DRACIP","HBA","BESR","BESR_Location","CommVault"
+"ADMPLS062M","Active","Intel(R) PRO/1000 MT Network Connection","00:50:56:97:6B:BE","False","10.2.162.28","255.255.255.0","10.2.162.1",,"10.2.104.11","10.2.204.11",,"10.2.59.109","10.2.218.21","Auto Detect","Auto Detect","1Gbps",,"none","Yes","\\10.2.132.65\odc8$\admpls062m\","No"

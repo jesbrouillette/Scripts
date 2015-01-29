@@ -1,0 +1,2 @@
+"Server","Status","Drives","DiskSpace","NIC","MAC","DHCP","IP","Subnet","PriGtwy","SecGtwy","PriDNS","SecDNS","OtherDNS","PriWINS","SecWINS","Speed","Duplex","ConnectedSpeed","DRACIP","HBA","BESR","BESR_Location","BESR_Drives","CommVault"
+"XLWICH011M","Active","C:\","136.08 GB","Broadcom BCM5708C NetXtreme II GigE (NDIS VBD Client)","00:22:19:54:9D:DA","False","10.4.213.136","255.255.255.0","10.4.213.1",,"157.239.69.21","10.4.19.11",,"10.4.212.27","10.4.212.77","100 Mb","Full","100Mbps","10.4.213.138","none","No","","","No"

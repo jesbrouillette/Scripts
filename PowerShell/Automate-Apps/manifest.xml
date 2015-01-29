@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APPKITS xmlns:dt="urn:schemas-microsoft-com:datatypes">
+  <APPKIT NAME="SmartFox">
+    <REPOSITORY NAME="AWS S3 JESB" PATH="https://s3.amazonaws.com/JesB-East" />
+    <TEMP PATH="C:\Temp\SmartFox" TYPE="DIRECTORY" />
+    <DESTINATION PATH="C:\Temp\SmartFox" TYPE="DIRECTORY" />
+    <TOOLS>
+      <TOOL NAME="SmartFox">
+        <ACTION>INSTALL</ACTION>
+        <DOWNLOAD>TRUE</DOWNLOAD>
+        <VER>2.7.0</VER>
+        <FILENAME>SFS2X_windows-x64_2_7_0.exe</FILENAME>
+        <ARGS>-q</ARGS>
+      </TOOL>
+      <TOOL NAME="SmartFox">
+        <ACTION>SERVICE</ACTION>
+        <SERVICE>Spooler</SERVICE>
+        <COMMAND>Restart</COMMAND>
+      </TOOL>
+    </TOOLS>
+  </APPKIT>
+  <APPKIT NAME="WindowsToolKit">
+    <REPOSITORY NAME="AWS S3 MRP" PATH="https://mrp-us-bucket.s3.amazonaws.com/repository" />
+    <TEMP PATH="C:\Temp\dplytoolkit\repository" TYPE="DIRECTORY" />
+    <DESTINATION PATH="C:\RSTools" TYPE="DIRECTORY" />
+    <TOOLS>
+      <TOOL NAME="FireFox">
+        <ACTION>INSTALL</ACTION>
+        <DOWNLOAD>TRUE</DOWNLOAD>
+        <VER>13.0.1</VER>
+        <FILENAME>Firefox+Setup+13.0.1.exe</FILENAME>
+        <ARGS>-ms</ARGS>
+      </TOOL>
+      <TOOL NAME="PowerGUI">
+        <ACTION>INSTALL</ACTION>
+        <DOWNLOAD>TRUE</DOWNLOAD>
+        <VER>3.2.0.2237</VER>
+        <FILENAME>PowerGUI.3.2.0.2237.msi</FILENAME>
+        <ARGS>/qn</ARGS>
+      </TOOL>
+      <TOOL NAME="PSExec">
+        <ACTION>FILECOPY</ACTION>
+        <DOWNLOAD>TRUE</DOWNLOAD>
+        <DESTINATION>C:\RSTools</DESTINATION>
+        <FILENAME>PsExec.exe</FILENAME>
+      </TOOL>
+      <TOOL NAME="NETMON">
+        <ACTION>INSTALL</ACTION>
+        <DOWNLOAD>TRUE</DOWNLOAD>
+        <VER>3.4</VER>
+        <FILENAME>NM34_x64.exe</FILENAME>
+        <ARGS>/q</ARGS>
+      </TOOL>
+      <TOOL NAME="IEESC">
+        <ACTION>REGISTRY</ACTION>
+        <PATH>HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}</PATH>
+        <KEYNAME>IsInstalled</KEYNAME>
+        <KEYTYPE>DWORD</KEYTYPE>
+        <VALUE>0</VALUE>
+      </TOOL>
+      <TOOL NAME="IEESC">
+        <ACTION>REGISTRY</ACTION>
+        <PATH>HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}</PATH>
+        <KEYNAME>IsInstalled</KEYNAME>
+        <KEYTYPE>DWORD</KEYTYPE>
+        <VALUE>0</VALUE>
+      </TOOL>
+    </TOOLS>
+  </APPKIT>
+</APPKITS>

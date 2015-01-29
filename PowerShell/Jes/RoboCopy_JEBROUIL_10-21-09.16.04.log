@@ -1,0 +1,71 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows     ::     Version XP010
+-------------------------------------------------------------------------------
+
+  Started : Wed Oct 21 16:13:08 2009
+
+   Source : \\xlwichf01m\jebrouil$\
+     Dest : \\xlwichf01m\jebrouil$\Test\
+
+    Files : *.*
+	    
+  Options : *.* /V /S /E /COPY:DAT /Z /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+2009/10/21 16:13:08 ERROR 5 (0x00000005) Accessing Source Directory \\xlwichf01m\jebrouil$\
+Access is denied.
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows     ::     Version XP010
+-------------------------------------------------------------------------------
+
+  Started : Wed Oct 21 16:21:16 2009
+
+2009/10/21 16:21:17 ERROR 53 (0x00000035) Getting File System Type of Source \\xlwichf01m\jebrouil\
+The network path was not found.
+
+   Source - \\xlwichf01m\jebrouil\
+     Dest : \\xlwichf01m\jebrouil$\Test\
+
+    Files : *.*
+	    
+  Options : *.* /V /S /E /COPY:DAT /Z /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+2009/10/21 16:21:17 ERROR 53 (0x00000035) Accessing Source Directory \\xlwichf01m\jebrouil\
+The network path was not found.
+Waiting 30 seconds... Retrying...
+2009/10/21 16:21:47 ERROR 53 (0x00000035) Accessing Source Directory \\xlwichf01m\jebrouil\
+The network path was not found.
+Waiting 30 seconds...
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows     ::     Version XP010
+-------------------------------------------------------------------------------
+
+  Started : Wed Oct 21 16:22:48 2009
+
+2009/10/21 16:22:49 ERROR 53 (0x00000035) Getting File System Type of Source \\xlwichf01m\jebrouil\
+The network path was not found.
+
+   Source - \\xlwichf01m\jebrouil\
+     Dest : \\xlwichf01m\jebrouil$\Test\
+
+    Files : *.*
+	    
+  Options : *.* /V /S /E /COPY:DAT /Z /R:1 /W:30 
+
+------------------------------------------------------------------------------
+
+2009/10/21 16:22:49 ERROR 53 (0x00000035) Accessing Source Directory \\xlwichf01m\jebrouil\
+The network path was not found.
+Waiting 30 seconds... Retrying...
+2009/10/21 16:23:19 ERROR 53 (0x00000035) Accessing Source Directory \\xlwichf01m\jebrouil\
+The network path was not found.
+
+ERROR: RETRY LIMIT EXCEEDED.
+
+2009/10/21 16:23:19 ERROR 53 (0x00000035) Accessing Source Directory \\xlwichf01m\jebrouil\
+The network path was not found.

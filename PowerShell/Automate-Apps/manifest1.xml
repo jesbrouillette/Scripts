@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<List1 Prop="$CRED1"/>
+  <APPKIT NAME="ScriptBlock Test">
+    <REPOSITORY NAME="AWS S3 JESB" PATH="https://s3.amazonaws.com/JesB-East" />
+    <TEMP PATH="C:\Temp" TYPE="DIRECTORY" />
+    <DESTINATION PATH="C:\Temp" TYPE="DIRECTORY" />
+    <TOOLS>
+      <TOOL NAME="ScriptBlock">
+        <ACTION>SCRIPTBLOCK</ACTION>
+        <SCRIPTBLOCK>
+          $t = Start-Process notepad -PassThru
+          $t.GetType()
+          Start-Sleep 2
+
+          Write-Host "Methods available:" -fore Green
+          $t | gm -MemberType Method | select name | fw
+
+          Write-Host "Properties available:" -fore Green
+          $t | gm -MemberType Property | select name | fw
+
+          $t.CPU
+          $t.MainWindowTitle
+
+          $t | Stop-Process
+        </SCRIPTBLOCK>
+      </TOOL>
+    </TOOLS>
+  </APPKIT>
+</APPKITS>

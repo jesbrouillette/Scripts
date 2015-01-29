@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APPKITS xmlns:dt="urn:schemas-microsoft-com:datatypes">
+  <!--xmlns:dt adds the possiblity of data type validation-->
+  
+  <APPKIT NAME="SmartFox">
+    <!--Multiple APPKIT entries are alowed-->
+    
+    <REPOSITORY NAME="AWS S3 JESB" PATH="https://s3.amazonaws.com/JesB-East" />
+    <!--Unique S3 repository for the entire APPKIT-->
+    
+    <TEMP PATH="C:\Temp\SmartFox" TYPE="DIRECTORY" />
+    <!--Required location used for downloading files-->
+    
+    <DESTINATION PATH="C:\Temp\SmartFox" TYPE="DIRECTORY" /> 
+    !--Required location used for the final destination on file copies-->
+    
+    <TOOLS>
+    <!--Array of Tools to be utilized-->
+      
+      <TOOL NAME="Install">
+      <!--Tool Names Must be unique-->
+  
+        <ACTION>INSTALL</ACTION>
+        <!--Install an application-->
+
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <DOWNLOAD>TRUE</DOWNLOAD>
+        <!--Downloads the file-->
+
+        <REPOPATH>SmartFox</REPOPATH>
+        <!--Subfolder in the S3 Repo-->
+        
+        <VER>2.7.0</VER>
+        <!--Version number-->
+        
+        <FILENAME>SFS2X_windows-x64_2_7_0.exe</FILENAME>
+        <!--Unique file name to download-->
+        
+        <ARGS>-q -console</ARGS>
+        <!--Installation arguements.  Logging for MSI installs is already created in C:\RSTools-->
+      
+      </TOOL>
+  
+      <TOOL NAME="Service">
+      <!--Tool Names Must be unique-->
+  
+        <ACTION>SERVICE</ACTION>
+        <!--Stop, start, or restart a service-->
+        
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <SERVICE>Spooler</SERVICE>
+        <!--Service name, not display name-->
+        
+        <COMMAND>Restart</COMMAND>
+        <!--Stop, Start or Restart only-->
+      
+      </TOOL>
+
+      <TOOL NAME="Filecopy_FromRepo">
+      <!--Tool Names Must be unique-->
+
+        <ACTION>FILECOPY</ACTION>
+        <!--Copy a file-->
+
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <DOWNLOAD>TRUE</DOWNLOAD>
+        <!--Downloads the file-->
+
+        <REPOPATH></REPOPATH>
+        <!--OPTIONAL: Subfolder in the S3 Repo-->
+
+        <PATH></PATH>
+        <!--OPTIONAL: Adds an additonal folder to the download & copy location if required-->
+
+        <FILENAME>PsExec.exe</FILENAME>
+        <!--File name to copy.  Default destination is in APPKIT.DESTINATION.PATH above-->
+
+      </TOOL>
+
+      <TOOL NAME="Filecopy_FromLocal">
+      <!--Tool Names Must be unique-->
+
+        <ACTION>FILECOPY</ACTION>
+        <!--Copy a file-->
+
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <DOWNLOAD>FALSE</DOWNLOAD>
+        <!--Tells the script to use TOOL:SOURCE instead of from APPKIT.REPOSITORY.PATH-->
+
+        <SOURCE>C:\Temp</SOURCE>
+        <!--Local folder containing FILENAME-->
+
+        <DESTINATION>C:\Windows\Temp</DESTINATION>
+        <!--Adds an additonal folder to the download & copy location if required-->
+
+        <FILENAME>PsExec.exe</FILENAME>
+        <!--File name to copy.  Default destination is in TOOL.DESTINATION above-->
+
+      </TOOL>
+
+      <TOOL NAME="Registry">
+      <!--Tool Names Must be unique-->
+
+        <ACTION>REGISTRY</ACTION>
+        <!--Adds or updates a registry key-->
+        
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <PATH>HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}</PATH>
+        <!--Registry path in the format HKLM:\Folder\Folder-->
+        
+        <KEYNAME>IsInstalled</KEYNAME>
+        <!--Key Name-->
+
+        <KEYTYPE>DWORD</KEYTYPE>
+        <!--Key type specific to registry types-->
+        
+        <VALUE>0</VALUE>
+        <!--Key Value-->
+      
+      </TOOL>
+      
+      <TOOL NAME="ReplaceText">
+      <!--Tool Names Must be unique-->
+      
+        <ACTION>ReplaceText</ACTION>
+        <!--Repalce specific text in a file-->
+        
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <PATH>C:\Temp</PATH>
+        <!--Folder containg the file below in FILENAME.  Does not use the default from DESTINATION or TEMP above-->
+        
+        <FILENAME>ReplaceMe.txt</FILENAME>
+        <!--Filename in which text will be replaced-->
+        
+        <FIND>FindMe</FIND>
+        <!--Text to find-->
+        
+        <REPLACE>ReplaceMe</REPLACE>
+        <!--New text-->
+      
+      </TOOL>
+
+      <TOOL NAME="Commandline">
+      <!--Tool Names Must be unique-->
+
+        <ACTION>Commandline</ACTION>
+        <!--Execute any command line.  This can even be another PS1 or PowerShell command-->
+
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <PATH>C:\Windows</PATH>
+        <!--Folder containing the file to run-->
+
+        <FILENAME>command.com</FILENAME>
+        <!--File to run-->
+
+        <ARGS>/w</ARGS>
+        <!--Any switches or args-->
+        
+        <WORKINGFOLDER>C:\Windows</WORKINGFOLDER>
+        <!--Sets the working folder path-->
+      
+      </TOOL>
+      
+      <TOOL NAME="InsertText">
+      <!--Tool Names Must be unique-->
+      
+        <ACTION>InsertText</ACTION>
+        <!--Insert text at a given line of a file-->
+        
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <PATH>C:\Temp</PATH>
+        <!--Folder containg the file below in FILENAME.  Does not use the default from DESTINATION or TEMP above-->
+        
+        <FILENAME>Insert.txt</FILENAME>
+        <!--Filename in which text will be inserted-->
+        
+        <TEXT>Insert</TEXT>
+        <!--Text to insert-->
+        
+        <LINE>1</LINE>
+        <!--Line number to insert text-->
+    
+      </TOOL>
+
+      <TOOL NAME="ScriptBlock">
+      <!--Tool Names Must be unique-->
+        
+        <ACTION>SCRIPTBLOCK</ACTION>
+        <!--Execute any PowerShell scriptblock-->
+        
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <SCRIPTBLOCK>
+        <!--Insert scriptblock here-->  
+        
+        </SCRIPTBLOCK>
+        
+      </TOOL>
+  
+      <TOOL NAME="Uncompress">
+      <!--Tool Names Must be unique-->
+        
+        <ACTION>UNCOMPRESS</ACTION>
+        <!--Uncompresses files using 7zip-->
+        
+        <RUNTYPE>RUNONCE</RUNTYPE>
+	<!--Runs once only.  "ALWAYS" forces execution each time-->
+
+        <SOURCE>C:\Temp\File.zip</SOURCE>
+        <!--Full path of the file needing uncompressed-->
+        
+        <DESTINATION>C:\Full\Path</DESTINATION>
+        <!--Full destination folder path-->
+
+      </TOOL>
+  
+      <TOOL NAME="ModifyEnvVar">
+      <!--Tool Names Must be unique-->
+        
+        <ACTION>MODIFYENVVAR</ACTION>
+        <!--Modify an environment variable-->
+        
+        <ENVVAR>PATH</ENVVAR>
+	<!--Environemnt Variable name to modify-->
+
+        <ENVTYPE>COMPUTER</ENVTYPE>
+        <!--Specifies the type of environment to update:  User or Computer-->
+
+        <ENVACTION>ALWAYS</ENVACTION>
+        <!--When to execute:  RUNONCE or ALWAYS-->
+
+        <ENVVALUE>C:\RightScale</ENVVALUE>
+        <!--Value to insert into the environment variable-->
+
+      </TOOL>
+  
+    </TOOLS>
+
+  </APPKIT>
+
+</APPKITS>

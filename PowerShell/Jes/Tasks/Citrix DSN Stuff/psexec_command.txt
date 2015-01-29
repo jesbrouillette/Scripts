@@ -1,0 +1,1 @@
+psexec @update.txt -c -f updatedsn.bat -w c:\temp updatedsn.bat > updatedsn.log
